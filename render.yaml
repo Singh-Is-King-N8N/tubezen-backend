@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: youtube-audio-proxy
+    env: node
+    plan: free
+    buildCommand: "npm install && pip install yt-dlp"
+    startCommand: "npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
+    disk:
+      name: downloads
+      mountPath: /app/downloads
+      sizeGB: 1 
